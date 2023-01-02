@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Create your models here.
-=======
-=======
->>>>>>> lesson_4
 from django.db import models
 
 
@@ -83,7 +77,3 @@ class CourseTeachers(models.Model):
     def delete(self, *args):
         self.deleted = True
         self.save()
-<<<<<<< HEAD
->>>>>>> 60f3dc213b3f6b217583ad1f4a224683ffb64068
-=======
->>>>>>> lesson_4

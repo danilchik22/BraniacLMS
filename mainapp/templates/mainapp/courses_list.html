@@ -1,73 +1,15 @@
 {% extends 'base.html' %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> lesson_4
+
 {% load static %}
 
 {% block title %}
 Курсы
 {% endblock title %}
-<<<<<<< HEAD
->>>>>>> 60f3dc213b3f6b217583ad1f4a224683ffb64068
-=======
->>>>>>> lesson_4
 
 {% block content %}
 
 <div class="row justify-content-center mt-3">
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  {% for item in objects %}
->>>>>>> lesson_4
-  <div class="card col-sm-12 col-md-6 col-lg-4 border-0">
-    <a href="{% url 'mainapp:courses_detail' pk=item.pk %}">
-      <img src="{% static item.cover %}" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title text-center">{{ item.name }}</h5>
-      </div>
-    </a>
-  </div>
-<<<<<<< HEAD
-
-
-
-  <div class="card col-sm-12 col-md-6 col-lg-4 border-0">
-    <a href="#">
-      <img src="/static/img/course005.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Web PHP</h5>
-      </div>
-    </a>
-  </div>
-
-
-
-  <div class="card col-sm-12 col-md-6 col-lg-4 border-0">
-    <a href="#">
-      <img src="/static/img/course006.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Python AI</h5>
-      </div>
-    </a>
-  </div>
-
-
-
-  <div class="card col-sm-12 col-md-6 col-lg-4 border-0">
-    <a href="#">
-      <img src="/static/img/course007.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">DevOps</h5>
-      </div>
-    </a>
-  </div>
-
-=======
   {% for item in objects %}
   <div class="card col-sm-12 col-md-6 col-lg-4 border-0">
     <a href="{% url 'mainapp:courses_detail' pk=item.pk %}">
@@ -78,11 +20,6 @@
     </a>
   </div>
   {% endfor %}
->>>>>>> 60f3dc213b3f6b217583ad1f4a224683ffb64068
-=======
-  {% endfor %}
->>>>>>> lesson_4
-
 </div>
 <div class="row justify-content-center align-items-center mt-3 mb-n3">
   <nav aria-label="Page navigation example">

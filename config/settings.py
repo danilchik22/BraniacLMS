@@ -37,14 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     "markdownify.apps.MarkdownifyConfig",
->>>>>>> 60f3dc213b3f6b217583ad1f4a224683ffb64068
-=======
-    "markdownify.apps.MarkdownifyConfig",
->>>>>>> lesson_4
     "mainapp",
 ]
 
