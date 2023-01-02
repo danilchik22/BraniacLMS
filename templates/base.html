@@ -18,7 +18,15 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="{% static 'css/fontawesome.all.min.css' %}">
 
+<<<<<<< HEAD
   <title>Welcome to Braniac!</title>
+=======
+  <title>
+    {% block title %}
+    Welcome to Braniac!
+    {% endblock title %}
+  </title>
+>>>>>>> 60f3dc213b3f6b217583ad1f4a224683ffb64068
 </head>
 
 <body>
@@ -65,7 +73,12 @@
           <li><a href="#">Положения &amp; Условия</a></li>
           <li><a href="#">Конфиденциальность &amp; Cookies</a></li>
           <li><a href="#">Документация по API</a></li>
+<<<<<<< HEAD
           <li><a href="{% url 'mainapp:doc_site' %}">Документация по сайту</a></li>
+=======
+          <li><a href="{% url 'mainapp:doc_site' %}">Документация по сайту</a>
+          </li>
+>>>>>>> 60f3dc213b3f6b217583ad1f4a224683ffb64068
         </ul>
         </p>
       </div>

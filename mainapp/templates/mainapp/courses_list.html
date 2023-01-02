@@ -1,10 +1,19 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
+=======
+{% load static %}
+
+{% block title %}
+Курсы
+{% endblock title %}
+>>>>>>> 60f3dc213b3f6b217583ad1f4a224683ffb64068
 
 {% block content %}
 
 <div class="row justify-content-center mt-3">
 
 
+<<<<<<< HEAD
   <div class="card col-sm-12 col-md-6 col-lg-4 border-0">
     <a href="#">
       <img src="/static/img/course001.jpg" class="card-img-top" alt="...">
@@ -80,6 +89,18 @@
     </a>
   </div>
 
+=======
+  {% for item in objects %}
+  <div class="card col-sm-12 col-md-6 col-lg-4 border-0">
+    <a href="{% url 'mainapp:courses_detail' pk=item.pk %}">
+      <img src="{% static item.cover %}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ item.name }}</h5>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+>>>>>>> 60f3dc213b3f6b217583ad1f4a224683ffb64068
 
 </div>
 <div class="row justify-content-center align-items-center mt-3 mb-n3">
