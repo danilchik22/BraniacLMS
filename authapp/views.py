@@ -53,7 +53,7 @@ class RegisterView(TemplateView):
                 )
             ):
                 new_user = models.CustomUser.objects.create(
-                    username=request.POST.get("username"),
+                    username=request.POST.get("username").lower(),
                     first_name=request.POST.get("first_name"),
                     last_name=request.POST.get("last_name"),
                     age=request.POST.get("age") if request.POST.get("age") else 0,
