@@ -1,18 +1,20 @@
 import logging
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.core.cache import cache
-from django.http import FileResponse, JsonResponse, HttpResponseRedirect
+from django.http import FileResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView, UpdateView, View
-from django.contrib import messages
+
 from mainapp import forms as mainapp_forms
 from mainapp import models as mainapp_models
-from django.utils.translation import gettext_lazy as _
 from mainapp import tasks as mainapp_tasks
+
 logger = logging.getLogger(__name__)
 
 
@@ -104,7 +106,7 @@ class CourseFeedbackFormProcessView(LoginRequiredMixin, CreateView):
 
 class ContactsPageView(TemplateView):
     template_name = "mainapp/contacts.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
@@ -116,19 +118,16 @@ class ContactsPageView(TemplateView):
             cache_log_flag = cache.get(f"mail_feedback_lock_{self.request.user.pk}")
             if not cache_log_flag:
                 cache.set(
-                    f'mail_feedback_lock_{self.request.user.pk}',
+                    f"mail_feedback_lock_{self.request.user.pk}",
                     "lock",
                     timeout=300,
                 )
                 messages.add_message(self.request, messages.INFO, _("Message sended"))
                 mainapp_tasks.send_feedback_mail.delay(
-                    {
-                        "user_id": self.request.POST.get("user_id"),
-                        "message": self.request.POST.get("message")
-                    }
+                    {"user_id": self.request.POST.get("user_id"), "message": self.request.POST.get("message")}
                 )
             else:
-                 messages.add_message(
+                messages.add_message(
                     self.request,
                     messages.WARNING,
                     _("You can send only one message per 5 minutes"),
@@ -161,4 +160,3 @@ class LogDownloadView(UserPassesTestMixin, View):
 
     def get(self, *args, **kwargs):
         return FileResponse(open(settings.LOG_FILE, "rb"))
-
