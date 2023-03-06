@@ -23,6 +23,10 @@ class MainPageView(TemplateView):
 
 
 class NewsListView(ListView):
+    """
+    Контролер для выдачи списка новостей.
+    """
+
     model = mainapp_models.News
     paginate_by = 5
 
@@ -31,6 +35,10 @@ class NewsListView(ListView):
 
 
 class NewsCreateView(PermissionRequiredMixin, CreateView):
+    """
+    Контролер для создания новости.
+    """
+
     model = mainapp_models.News
     fields = "__all__"
     success_url = reverse_lazy("mainapp:news")
@@ -38,10 +46,18 @@ class NewsCreateView(PermissionRequiredMixin, CreateView):
 
 
 class NewsDetailView(DetailView):
+    """
+    Контролер для выдачи деталей по новости.
+    """
+
     model = mainapp_models.News
 
 
 class NewsUpdateView(PermissionRequiredMixin, UpdateView):
+    """
+    Контролер обновления новости.
+    """
+
     model = mainapp_models.News
     fields = "__all__"
     success_url = reverse_lazy("mainapp:news")
@@ -55,6 +71,10 @@ class NewsDeleteView(PermissionRequiredMixin, DeleteView):
 
 
 class CoursesListView(TemplateView):
+    """
+    Контролер для выдачи списка курсов.
+    """
+
     template_name = "mainapp/courses_list.html"
 
     def get_context_data(self, **kwargs):
@@ -64,6 +84,10 @@ class CoursesListView(TemplateView):
 
 
 class CoursesDetailView(TemplateView):
+    """
+    Контролер для выдачи деталей курса.
+    """
+
     template_name = "mainapp/courses_detail.html"
 
     def get_context_data(self, pk=None, **kwargs):
@@ -104,6 +128,10 @@ class CoursesDetailView(TemplateView):
 
 
 class CourseFeedbackFormProcessView(LoginRequiredMixin, CreateView):
+    """
+    Контролер для создания отзыва о курсе.
+    """
+
     model = mainapp_models.CourseFeedback
     form_class = mainapp_forms.CourseFeedbackForm
 
@@ -114,6 +142,10 @@ class CourseFeedbackFormProcessView(LoginRequiredMixin, CreateView):
 
 
 class ContactsPageView(TemplateView):
+    """
+    Контролер для выдачи страницы с контактами.
+    """
+
     template_name = "mainapp/contacts.html"
 
     def get_context_data(self, **kwargs):
@@ -149,6 +181,10 @@ class DocSitePageView(TemplateView):
 
 
 class LogView(TemplateView):
+    """
+    Контролер для выдачи страницы с логом.
+    """
+
     template_name = "mainapp/log_view.html"
 
     def get_context_data(self, **kwargs):
@@ -164,6 +200,10 @@ class LogView(TemplateView):
 
 
 class LogDownloadView(UserPassesTestMixin, View):
+    """
+    Контролер для скачивания лога.
+    """
+
     def test_func(self):
         return self.request.user.is_superuser
 

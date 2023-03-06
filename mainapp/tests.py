@@ -137,7 +137,6 @@ class TestTaskMailSend(TestCase):
 
 
 class TestNewsSelenium(StaticLiveServerTestCase):
-
     fixtures = (
         "authapp/fixtures/001_user_admin.json",
         "mainapp/fixtures/001_news.json",

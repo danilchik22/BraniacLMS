@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("mainapp", "0002_News_data_migration"),
     ]
@@ -16,10 +15,18 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name="lesson",
-            options={"ordering": ("course", "num"), "verbose_name": "Lesson", "verbose_name_plural": "Lessons"},
+            options={
+                "ordering": ("course", "num"),
+                "verbose_name": "Lesson",
+                "verbose_name_plural": "Lessons",
+            },
         ),
         migrations.AlterModelOptions(
             name="news",
-            options={"ordering": ("-created",), "verbose_name": "News", "verbose_name_plural": "News"},
+            options={
+                "ordering": ("-created",),
+                "verbose_name": "News",
+                "verbose_name_plural": "News",
+            },
         ),
     ]
